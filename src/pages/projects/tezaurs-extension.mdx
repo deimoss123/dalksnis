@@ -1,0 +1,42 @@
+---
+position: 1
+layout: ../../layouts/MarkdownLayout.astro
+title: Tēzaurs Plus
+description: A browser extension to add autocomplete to tezaurs.lv
+githubLink: https://github.com/deimoss123/tezaurs-extension
+---
+
+{/* Custom components */}
+import Link from '../../components/Link.astro';
+export const components = { a: Link };
+
+This is an extension that adds autocomplete to the [tezaurs.lv](https://tezaurs.lv) search bar.
+
+Available for both [Google Chrome](https://chrome.google.com/webstore/detail/t%C4%93zaurs-plus/fiacllaiaehoiedplngjcnehcfamdoko/) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/tezaurs-extension/).
+
+<br />
+
+Example:
+
+![example gif](/images/tez-ext-example.gif)
+
+## How it works
+
+For every keystroke, the extension sends a request to my custom API server `api.dalksnis.lv` to retrieve entries for the autocomplete menu. The extension is written in plain JavaScript with JSDoc.
+
+## The API server
+
+The API server is written in TypeScript using [Bun](https://bun.sh/) and the [ElysiaJS](https://elysiajs.com/) library (it's pretty fast). The server uses Tēzaurs open data, which is a large xml file that gets parsed and written to a Postgres database. The database uses a `t_gist` index.
+
+<br />
+This is how the postgres query looks like. `$1` is the text sent to the api.
+
+```sql
+SELECT word FROM words
+WHERE word % $1 AND n = 1
+ORDER BY word <-> $1 ASC
+LIMIT 5
+```
+
+<br />
+Currently the API server code is not publicaly available.

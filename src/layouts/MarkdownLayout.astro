@@ -1,0 +1,30 @@
+---
+import type { MarkdownInstance } from 'astro';
+import type { ProjectData } from '../types/ProjectData';
+import BaseLayout from './BaseLayout.astro';
+import GithubBtn from '../components/GithubBtn.astro';
+import BackBtn from '../components/BackBtn.astro';
+
+interface Props {
+  frontmatter: MarkdownInstance<ProjectData>['frontmatter'];
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <main class="w-full p-4 lg:mx-auto lg:w-[1000px]">
+    <BackBtn />
+    <h1
+      class="mb-4 mt-2 flex items-end justify-between border-b border-gray-500 pb-2 text-4xl"
+    >
+      {frontmatter.title}
+      <GithubBtn url={frontmatter.githubLink} />
+    </h1>
+    <div
+      class="prose-invert prose-h2:mb-2 prose-h2:mt-8 prose-h2:text-3xl prose-pre:w-full prose-img:rounded-[0.25rem]"
+    >
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+// a simple wrapper for the a element to add target="_blank"
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} target="_blank"><slot /></a>

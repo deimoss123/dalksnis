@@ -1,0 +1,23 @@
+---
+import type { MDXInstance } from 'astro';
+import type { ProjectData } from '../types/ProjectData';
+
+interface Props {
+  data: MDXInstance<ProjectData>;
+}
+
+const {
+  data: {
+    frontmatter: { title, description },
+    url,
+  },
+} = Astro.props;
+---
+
+<a
+  href={url}
+  class="cursor-pointer rounded-md border border-slate-400 p-3 transition-all duration-200 hover:border-sky-400"
+>
+  <p class="text-xl">{title}</p>
+  <p class="text-slate-400">{description}</p>
+</a>

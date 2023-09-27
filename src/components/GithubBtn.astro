@@ -1,0 +1,18 @@
+---
+interface Props {
+  url: string;
+  className?: string;
+}
+
+const { url, className } = Astro.props;
+
+import { Icon } from 'astro-icon';
+---
+
+<a
+  href={url}
+  target="_blank"
+  class=`flex max-w-fit items-center gap-1 text-xl text-gray-400 transition-all hover:text-gray-300 ${className ?? ''}`
+>
+  <Icon pack="mdi" name="github" class="w-8" />GitHub
+</a>
