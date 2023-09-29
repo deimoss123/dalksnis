@@ -8,7 +8,7 @@ interface Props {
 
 const {
   data: {
-    frontmatter: { title, description },
+    frontmatter: { title, description, date },
     url,
   },
 } = Astro.props;
@@ -16,8 +16,9 @@ const {
 
 <a
   href={url}
-  class="cursor-pointer rounded-md border border-slate-400 p-3 transition-[color] duration-200 hover:border-sky-400"
+  class="cursor-pointer rounded-md border border-slate-400 p-3 transition-[border-color] duration-200 hover:border-sky-400"
 >
-  <p class="text-xl">{title}</p>
+  <h3 class="inline text-xl">{title}</h3>
+  <span class="text-md ml-2 inline text-slate-500">{date}</span>
   <p class="text-slate-400">{description}</p>
 </a>

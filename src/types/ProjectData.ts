@@ -3,4 +3,5 @@ export interface ProjectData {
   title: string;
   description: string;
   githubLink: string;
+  date: string;
 }
