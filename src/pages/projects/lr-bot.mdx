@@ -2,9 +2,26 @@
 position: 3
 layout: ../../layouts/MarkdownLayout.astro
 title: Latvian Radio Bot
-description: Work in progress
+description: A Discord bot to listen to Latvian radio stations
 githubLink: https://github.com/deimoss123/LatvijasRadioBots
 date: 2021-2023
+skills: ['ts', 'node', 'docker']
 ---
 
-Work in progress
+import CustomImage from '../../components/CustomImage.astro';
+import radioImg from '../../assets/images/lr-radio.png';
+
+This is a bot for the chatting app Discord. Users can join voice channels and use this bot to listen to various Latvian radio stations.
+
+<br />
+Currently the bot is in 130+ Discord servers and is being used daily.
+
+<br />
+<CustomImage src={radioImg} alt="The play command" width={400} />
+<br />
+
+This was a project I made in one evening because a friend asked me to. However since then I have done a lot to improve and optimize it, and it has grown larger than I had ever imagined.
+
+<br />
+This project also introduced me to Docker, because I was having problems hosting
+this on my VPS due to various issues with ffmpeg, so containerizing helped a lot.

@@ -2,9 +2,54 @@
 position: 2
 layout: ../../layouts/MarkdownLayout.astro
 title: UlmaņBots
-description: Work in progress
+description: A text based multiplayer game
 githubLink: https://github.com/deimoss123/ulman-bots
 date: 2021-2022
+skills: ['ts', 'node', 'mongo']
 ---
 
-Work in progress
+import CustomImage from '../../components/CustomImage.astro';
+import invImg from '../../assets/images/ub-inv.png';
+import tirgusImg from '../../assets/images/ub-tirgus.png';
+import zvejotImg from '../../assets/images/ub-zvejot.png';
+
+This is an "economy" bot for the chatting platform Discord, where users can trade with eachother, play games and participate in various activities. Although I call it an "economy bot", it's more of a text based multiplayer adventure game.
+
+<br />
+Currently the bot is in 110+ Discord servers and at its peak had over 100 monthly
+active users.
+
+## Item system
+
+There are 40+ unique items to acquire in the bot, each with their own uses and behaviors.
+
+<br />
+Here is an example of a user's inventory
+
+<CustomImage src={invImg} alt="A user's inventory" width={400} />
+<br />
+
+To acquire more valueble items, users must get them from the market (image below)
+
+<CustomImage src={tirgusImg} alt="The market" width={400} />
+<br />
+
+These more valuable items require other items to be purchased, which leads players to trade with eachother.
+
+## Gambling
+
+While I do not encourage gambling, it's a loved activity of the users. Users can play slots, roulette and scratch loto tickets. Even though I have stated multiple times publicily that it's an incredibly unfair system. There are multiple people with thousands of spins in both slots and roulette.
+
+<br />
+Below you can see a roulette spin with 100 lati (the bot's virtual currency).
+
+![](/images/ub-rul.gif)
+
+## Fishing system
+
+Users can get fishing rods and catch various types of fish and other items.
+
+<CustomImage src={zvejotImg} alt="The market" width={400} />
+<br />
+
+There are other systems I haven't mentioned here as it would make this page very long. As of February 2024 I have decided to revive this project and make the biggest update to date. Hopefully I remember to update this page as well.

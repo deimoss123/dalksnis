@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 ---
 
 <a
@@ -7,9 +7,10 @@ import { Icon } from 'astro-icon';
   class="flex max-w-fit items-center text-gray-400 transition-[color] hover:text-gray-300"
 >
   <Icon
-    pack="ic"
-    name="round-chevron-left"
-    class="ml-[-0.5rem] mr-[-0.25rem] w-8"
+    name="ic:round-chevron-left"
+    class="ml-[-0.5rem] mr-[-0.25rem]"
+    height="32"
+    width="32"
   />
    Go back
 </a>

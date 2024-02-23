@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
+const { src, width, height, alt } = Astro.props;
+---
+
+<Image src={src} alt={alt || ''} width={width} height={height} />

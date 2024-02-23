@@ -4,6 +4,8 @@ import type { ProjectData } from '../types/ProjectData';
 import BaseLayout from './BaseLayout.astro';
 import GithubBtn from '../components/GithubBtn.astro';
 import BackBtn from '../components/BackBtn.astro';
+import SkillIcon from '../components/SkillIcon.astro';
+import skillList from '../skillList';
 
 interface Props {
   frontmatter: MarkdownInstance<ProjectData>['frontmatter'];
@@ -13,9 +15,14 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <main class="w-full p-4 lg:mx-auto lg:w-[1000px]">
+  <main class="w-full p-4 pb-8 lg:mx-auto lg:w-[1000px]">
     <BackBtn />
-    <p class="text-md mt-4 text-slate-500">{frontmatter.date}</p>
+    <div class="flex items-center justify-between">
+      <p class="text-md mt-4 text-slate-500">{frontmatter.date}</p>
+      <div class="flex gap-2">
+        {frontmatter.skills.map(s => <SkillIcon {...skillList[s]} size={24} />)}
+      </div>
+    </div>
     <div class="mb-4 border-b border-gray-500 pb-2">
       <h1 class="flex items-end justify-between text-4xl">
         {frontmatter.title}

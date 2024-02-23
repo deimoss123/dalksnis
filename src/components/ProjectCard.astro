@@ -1,6 +1,8 @@
 ---
 import type { MDXInstance } from 'astro';
 import type { ProjectData } from '../types/ProjectData';
+import SkillIcon from './SkillIcon.astro';
+import skillList from '../skillList';
 
 interface Props {
   data: MDXInstance<ProjectData>;
@@ -8,7 +10,7 @@ interface Props {
 
 const {
   data: {
-    frontmatter: { title, description, date },
+    frontmatter: { title, description, date, skills },
     url,
   },
 } = Astro.props;
@@ -16,9 +18,21 @@ const {
 
 <a
   href={url}
-  class="cursor-pointer rounded-md border border-slate-400 p-3 transition-[border-color] duration-200 hover:border-sky-400"
+  class="project_card translate-x-[-8px] cursor-pointer pl-2 transition-[border-color] duration-200 hover:border-sky-400"
 >
   <h3 class="inline text-xl">{title}</h3>
   <span class="text-md ml-2 inline text-slate-500">{date}</span>
-  <p class="text-slate-400">{description}</p>
+  <p class="mb-2 text-slate-400">{description}</p>
+  <div class="flex gap-2">
+    {skills.map(s => <SkillIcon {...skillList[s]} size={20} />)}
+  </div>
 </a>
+
+<style>
+  .project_card {
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .project_card:hover {
+    box-shadow: -2px 0 0 0 #6b7280;
+  }
+</style>

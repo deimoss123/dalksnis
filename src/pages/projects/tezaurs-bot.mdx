@@ -2,9 +2,22 @@
 position: 4
 layout: ../../layouts/MarkdownLayout.astro
 title: Tēzaurs Bot
-description: Work in progress
+description: A Discord bot to get word definitions from tezaurs.lv
 githubLink: https://github.com/deimoss123/tezaurs-bot
 date: 2022-2023
+skills: ['ts', 'node', 'postgres', 'docker']
 ---
 
-Work in progress
+import CustomImage from '../../components/CustomImage.astro';
+import exampleImg from '../../assets/images/tez-word.png';
+import autocompleteImg from '../../assets/images/tez-autocomplete.png';
+
+A simple Discord bot to get word definitions from tezaurs.lv.
+
+<CustomImage src={exampleImg} alt="Word definition" width={400} />
+
+<br />
+
+It also has autocomplete!
+
+<CustomImage src={autocompleteImg} alt="Autocomplete" width={400} />
