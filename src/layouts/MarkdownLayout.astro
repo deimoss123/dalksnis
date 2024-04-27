@@ -4,8 +4,8 @@ import type { ProjectData } from '../types/ProjectData';
 import BaseLayout from './BaseLayout.astro';
 import GithubBtn from '../components/GithubBtn.astro';
 import BackBtn from '../components/BackBtn.astro';
-import SkillIcon from '../components/SkillIcon.astro';
-import skillList from '../skillList';
+import { skillList } from '../skillList';
+import SkillBadge from '../components/SkillBadge.astro';
 
 interface Props {
   frontmatter: MarkdownInstance<ProjectData>['frontmatter'];
@@ -17,17 +17,15 @@ const { frontmatter } = Astro.props;
 <BaseLayout title={frontmatter.title}>
   <main class="w-full p-4 pb-8 lg:mx-auto lg:w-[1000px]">
     <BackBtn />
-    <div class="flex items-center justify-between">
-      <p class="text-md mt-4 text-slate-500">{frontmatter.date}</p>
-      <div class="flex gap-2">
-        {frontmatter.skills.map(s => <SkillIcon {...skillList[s]} size={24} />)}
-      </div>
-    </div>
+    <p class="text-md mt-4 text-slate-500">{frontmatter.date}</p>
     <div class="mb-4 border-b border-gray-500 pb-2">
       <h1 class="flex items-end justify-between text-4xl">
         {frontmatter.title}
         <GithubBtn url={frontmatter.githubLink} />
       </h1>
+    </div>
+    <div class="mb-4 flex flex-wrap gap-2">
+      {frontmatter.skills.map(s => <SkillBadge data={skillList[s]} />)}
     </div>
     <div
       class="prose-invert prose-h2:mb-2 prose-h2:mt-8 prose-h2:text-3xl prose-pre:w-full prose-img:rounded-[0.25rem]"

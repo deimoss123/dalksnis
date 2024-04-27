@@ -1,33 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import SkillIcon from '../components/SkillIcon.astro';
 import type { ProjectData } from '../types/ProjectData';
 import GithubBtn from '../components/GithubBtn.astro';
+import { skillList, categories } from '../skillList';
+import SkillBadge from '../components/SkillBadge.astro';
 const projects = await Astro.glob<ProjectData>('../pages/projects/*.mdx');
-import skillList from '../skillList';
 ---
 
 <BaseLayout title="Daniels Alksnis">
-  <main class="mx-auto w-full p-4 pt-12 lg:w-[1000px]">
-    <h1 class="text-2xl text-gray-400">
-      Hi, I'm<span class="block translate-x-[-2px] text-5xl text-gray-100"
-        >Daniels Alksnis</span
-      >I like to make things :)
+  <main class="mx-auto w-full p-4 lg:w-[1000px]">
+    <h1
+      class="custom-heading py-4 text-4xl font-extrabold text-sky-300 sm:text-6xl"
+    >
+      Hi, I'm Daniels
     </h1>
+    <p>
+      I'm a 22 year old developer from Latvia. Currently I'm in my 2nd year of
+      studying Computer Systems at Riga Technical University. I like to make
+      websites, CLI tools, Discord bots and other random things that I find
+      interesting.
+    </p>
     <GithubBtn
       url="https://github.com/deimoss123"
       className="mt-6"
       text="My GitHub"
     />
-    <div class="mt-6 flex flex-wrap gap-2">
-      {
-        Object.values(skillList).map(({ name, iconName }) => (
-          <SkillIcon name={name} iconName={iconName} size={32} />
-        ))
-      }
-    </div>
-    <h2 class="my-8 border-b border-gray-500 pb-2 text-3xl">My Projects</h2>
+    <h1 class="mb-2 mt-8 border-b border-gray-500 pb-2 text-3xl">
+      My Projects
+    </h1>
+
     <div class="flex flex-col gap-8">
       {
         [...projects]
@@ -35,5 +37,37 @@ import skillList from '../skillList';
           .map(project => <ProjectCard data={project} />)
       }
     </div>
+
+    <h1 class="mb-2 mt-12 border-b border-gray-500 pb-2 text-3xl">
+      Things I know and use
+    </h1>
+    <div id="skills">
+      {
+        Object.entries(categories).map(([categoryKey, categoryText]) => (
+          <div class="mb-3">
+            <h2 class="mb-1 text-xl font-bold">{categoryText}</h2>
+            <div class="flex flex-wrap gap-2">
+              {Object.values(skillList)
+                .filter(v => v.category === categoryKey)
+                .map(skill => (
+                  <SkillBadge data={skill} showYear />
+                ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </main>
 </BaseLayout>
+
+<style>
+  .custom-heading {
+    background: linear-gradient(
+      47deg,
+      rgba(183, 247, 255, 1) 0%,
+      rgba(4, 12, 223, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

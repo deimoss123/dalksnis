@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Skill } from '../skillList';
+
+interface Props {
+  data: Skill;
+  showYear?: boolean;
+}
+
+const { data, showYear } = Astro.props;
+const years = new Date().getFullYear() - (data.year ?? 0);
+---
+
+<div
+  class="flex w-max items-center gap-1 rounded-md border border-gray-500 px-2 py-1 text-sm"
+>
+  <Icon name={data.iconName} width={16} height={16} />
+  {data.name}
+  {
+    data.year && showYear && (
+      <span class="w-max text-gray-400">
+        {years} {years === 1 ? 'year' : 'years'}
+      </span>
+    )
+  }
+</div>

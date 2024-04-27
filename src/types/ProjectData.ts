@@ -1,4 +1,4 @@
-import type { Skill } from '../skillList';
+import { type SkillKey } from '../skillList';
 
 export interface ProjectData {
   position: number;
@@ -6,5 +6,5 @@ export interface ProjectData {
   description: string;
   githubLink: string;
   date: string;
-  skills: Skill[];
+  skills: SkillKey[];
 }

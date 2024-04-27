@@ -1,8 +1,8 @@
 ---
 import type { MDXInstance } from 'astro';
 import type { ProjectData } from '../types/ProjectData';
-import SkillIcon from './SkillIcon.astro';
-import skillList from '../skillList';
+import { skillList } from '../skillList';
+import SkillBadge from './SkillBadge.astro';
 
 interface Props {
   data: MDXInstance<ProjectData>;
@@ -20,11 +20,11 @@ const {
   href={url}
   class="project_card translate-x-[-8px] cursor-pointer pl-2 transition-[border-color] duration-200 hover:border-sky-400"
 >
-  <h3 class="inline text-xl">{title}</h3>
-  <span class="text-md ml-2 inline text-slate-500">{date}</span>
+  <h3 class="inline text-xl font-bold">{title}</h3>
+  <span class="ml-2 inline text-sm text-slate-500">{date}</span>
   <p class="mb-2 text-slate-400">{description}</p>
-  <div class="flex gap-2">
-    {skills.map(s => <SkillIcon {...skillList[s]} size={20} />)}
+  <div class="flex flex-wrap gap-2">
+    {skills.map(s => <SkillBadge data={skillList[s]} />)}
   </div>
 </a>
 
